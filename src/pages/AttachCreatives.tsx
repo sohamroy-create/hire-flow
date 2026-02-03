@@ -117,12 +117,19 @@ const AttachCreatives = () => {
 
         {/* Main Card */}
         <Card className="mt-8 p-6 md:p-8">
-          <div className="mb-6">
+          <div className="mb-4">
             <h1 className="text-2xl font-bold text-foreground">
               Attach Creatives
             </h1>
             <p className="text-muted-foreground mt-1">
               Upload your creative assets for the advertisement
+            </p>
+          </div>
+
+          {/* Tier-specific Message */}
+          <div className="bg-muted/50 border border-border rounded-lg p-4 mb-6">
+            <p className="text-sm text-muted-foreground">
+              {getTierMessage()}
             </p>
           </div>
 
@@ -198,13 +205,6 @@ const AttachCreatives = () => {
                 </Button>
               </div>
             ))}
-          </div>
-
-          {/* Tier-specific Message */}
-          <div className="bg-muted/50 border border-border rounded-lg p-4 mb-6">
-            <p className="text-sm text-muted-foreground">
-              {getTierMessage()}
-            </p>
           </div>
 
           {/* Submit Button */}
