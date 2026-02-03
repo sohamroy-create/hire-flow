@@ -127,10 +127,15 @@ const AttachCreatives = () => {
           </div>
 
           {/* Tier-specific Message */}
-          <div className="bg-muted/50 border border-border rounded-lg p-4 mb-6">
-            <p className="text-sm text-muted-foreground">
-              {getTierMessage()}
-            </p>
+          <div className="bg-primary/10 border-2 border-primary/30 rounded-lg p-5 mb-6">
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
+                <span className="text-primary-foreground text-xs font-bold">i</span>
+              </div>
+              <p className="text-base font-medium text-foreground">
+                {getTierMessage()}
+              </p>
+            </div>
           </div>
 
           {/* Creative Upload Slots */}
