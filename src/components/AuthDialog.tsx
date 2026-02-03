@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -17,14 +18,21 @@ interface AuthDialogProps {
 }
 
 const AuthDialog = ({ open, onOpenChange, selectedTier }: AuthDialogProps) => {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const navigateToUserDetails = () => {
+    onOpenChange(false);
+    navigate("/user-details", { state: { selectedTier } });
+  };
+
   const handleGoogleLogin = () => {
     // TODO: Connect to backend for Google OAuth
     console.log("Google login clicked for tier:", selectedTier);
+    navigateToUserDetails();
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -36,6 +44,7 @@ const AuthDialog = ({ open, onOpenChange, selectedTier }: AuthDialogProps) => {
       // TODO: Connect to backend for signup
       console.log("Signup submitted:", { email, password, confirmPassword, selectedTier });
     }
+    navigateToUserDetails();
   };
 
   const resetForm = () => {
