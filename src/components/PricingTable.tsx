@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import AuthDialog from "@/components/AuthDialog";
 
 type Timeline = "15" | "30" | "45";
 
@@ -127,9 +128,18 @@ const PricingTable = () => {
     growth: "30",
     premium: "30",
   });
+  const [authDialogOpen, setAuthDialogOpen] = useState(false);
+  const [selectedTier, setSelectedTier] = useState<string | undefined>();
 
   const updateTimeline = (tier: string, timeline: Timeline) => {
     setTimelines((prev) => ({ ...prev, [tier]: timeline }));
+  };
+
+  const handleChoosePlan = (tierName: string) => {
+    // TODO: Check if user is authenticated
+    // For now, always show auth dialog
+    setSelectedTier(tierName);
+    setAuthDialogOpen(true);
   };
 
   const tiers = [
@@ -256,6 +266,7 @@ const PricingTable = () => {
                       ? "bg-primary hover:bg-primary/90"
                       : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                   )}
+                  onClick={() => handleChoosePlan(tier.name)}
                 >
                   Choose {tier.name}
                 </Button>
@@ -334,6 +345,7 @@ const PricingTable = () => {
                       ? "bg-primary hover:bg-primary/90"
                       : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                   )}
+                  onClick={() => handleChoosePlan(tier.name)}
                 >
                   Choose {tier.name}
                 </Button>
@@ -341,6 +353,13 @@ const PricingTable = () => {
             </Card>
           ))}
         </div>
+
+        {/* Auth Dialog */}
+        <AuthDialog
+          open={authDialogOpen}
+          onOpenChange={setAuthDialogOpen}
+          selectedTier={selectedTier}
+        />
       </div>
     </section>
   );
