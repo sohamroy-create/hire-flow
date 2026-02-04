@@ -104,8 +104,14 @@ const AttachCreatives = () => {
   const handleSubmit = () => {
     // TODO: Connect to backend to upload creatives
     console.log("Creatives submitted:", creatives);
-    // Navigate to dashboard or success page
-    navigate("/", { state: { completed: true } });
+    // Navigate to confirmation page
+    navigate("/confirmation", { 
+      state: { 
+        selectedTier,
+        userDetails,
+        creatives: creatives.filter(c => c.file !== null)
+      } 
+    });
   };
 
   return (

@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import UserDetails from "./pages/UserDetails";
 import PostJob from "./pages/PostJob";
 import AttachCreatives from "./pages/AttachCreatives";
+import Confirmation from "./pages/Confirmation";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/user-details" element={<UserDetails />} />
           <Route path="/post-job" element={<PostJob />} />
           <Route path="/attach-creatives" element={<AttachCreatives />} />
+          <Route path="/confirmation" element={<Confirmation />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
