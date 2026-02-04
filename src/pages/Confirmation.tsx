@@ -26,7 +26,7 @@ const Confirmation = () => {
 
           {/* Subtitle */}
           <p className="text-lg text-muted-foreground mb-8">
-            Your submission has been received successfully.
+            Your request has been received successfully.
           </p>
 
           {/* Main Message */}
