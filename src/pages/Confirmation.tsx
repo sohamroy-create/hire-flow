@@ -44,9 +44,8 @@ const Confirmation = () => {
 
           {/* Additional Info */}
           <div className="flex items-center justify-center gap-2 text-muted-foreground mb-8">
-            <Mail className="w-5 h-5" />
             <span className="text-sm">
-              Please check your email for confirmation details.
+              Meanwhile, your job is live on our website.
             </span>
           </div>
 
