@@ -86,7 +86,7 @@ const HeroSection = () => {
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="group relative rounded-xl border border-border bg-card/80 backdrop-blur-sm p-5 transition-shadow hover:shadow-md"
+                className="group relative rounded-xl border border-primary/40 bg-card/80 backdrop-blur-sm p-5 transition-shadow hover:shadow-md hover:shadow-primary/10 ring-1 ring-primary/20"
               >
                 {/* Step number + icon */}
                 <div className="flex items-center gap-3 mb-3">
