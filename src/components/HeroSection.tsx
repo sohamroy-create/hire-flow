@@ -49,18 +49,24 @@ const HeroSection = () => {
       <div className="relative container mx-auto max-w-6xl px-4 py-12 md:py-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — Marketing text */}
-          <div className="flex flex-col justify-center">
-            <h1 className="text-4xl md:text-5xl lg:text-[3.4rem] font-extrabold leading-[1.1] tracking-tight text-foreground">
-              Everyone's on social media.{" "}
-              <span className="text-primary">So are your candidates.</span>{" "}
-              <span className="text-muted-foreground">Are you?</span>
-            </h1>
+          <div className="flex flex-col justify-between h-full">
+            <div>
+              <h1 className="text-4xl md:text-5xl lg:text-[3.4rem] font-extrabold leading-[1.1] tracking-tight text-foreground">
+                Everyone's on social media.{" "}
+                <span className="text-primary">So are your candidates.</span>{" "}
+                <span className="text-muted-foreground">Are you?</span>
+              </h1>
 
-            <p className="mt-6 text-lg md:text-xl leading-relaxed text-muted-foreground max-w-lg">
-              We take your job, advertise it on optimal channels, and ensure you
-              fill that position —{" "}
-              <span className="font-semibold text-primary">fast!</span>
-            </p>
+              <p className="mt-6 text-lg md:text-xl leading-relaxed text-muted-foreground max-w-lg">
+                We take your job, advertise it on optimal channels, and ensure you
+                fill that position —{" "}
+                <span className="font-semibold text-primary">fast!</span>
+              </p>
+
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground max-w-lg">
+                You just post your job on our website, and throw your worries away.
+              </p>
+            </div>
 
             <div className="mt-8 flex items-center gap-4">
               <Button
