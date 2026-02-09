@@ -149,7 +149,7 @@ const PricingTable = () => {
   ];
 
   return (
-    <section className="pt-2 pb-6 px-4">
+    <section id="pricing" className="pt-2 pb-6 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
