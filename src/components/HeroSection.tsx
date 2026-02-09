@@ -85,8 +85,8 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/60" />
       </div>
 
-      <div className="relative container mx-auto max-w-6xl px-4 py-12 md:py-16">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div className="relative container mx-auto max-w-7xl px-4 py-12 md:py-16">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 items-start">
           {/* Left — Marketing text */}
           <div className="flex flex-col justify-between h-full">
             <div>
@@ -133,16 +133,16 @@ const HeroSection = () => {
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="group relative rounded-xl border border-primary/40 bg-card/80 backdrop-blur-sm p-5 transition-shadow hover:shadow-md hover:shadow-primary/10 ring-1 ring-primary/20"
+                className="group relative rounded-xl border border-primary/40 bg-card/80 backdrop-blur-sm p-5 md:p-6 transition-shadow hover:shadow-md hover:shadow-primary/10 ring-1 ring-primary/20"
               >
-                {/* Step number + icon */}
-                <div className="flex items-center gap-3 mb-3">
+                {/* Icon + header centered */}
+                <div className="flex flex-col items-center text-center gap-2 mb-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                     <step.icon className="h-5 w-5 text-primary" />
                   </div>
-                  <h3 className="font-bold text-foreground">{step.header}</h3>
+                  <h3 className="font-bold text-foreground whitespace-nowrap">{step.header}</h3>
                 </div>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground text-center">
                   {step.explanation}
                 </p>
               </div>
