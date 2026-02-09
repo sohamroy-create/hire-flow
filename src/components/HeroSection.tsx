@@ -10,13 +10,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import heroBg from "@/assets/hero-bg.png";
 
 const steps = [
@@ -182,7 +175,7 @@ const HeroSection = () => {
             </div>
             <div className="space-y-2">
               <Label htmlFor="consult-budget">Budget you are looking for</Label>
-              <Input id="consult-budget" name="budget" placeholder="e.g. ₹50,000 - ₹1,00,000" value={consultForm.budget} onChange={handleConsultChange} required />
+              <Input id="consult-budget" name="budget" placeholder="e.g. $5,000 - $10,000" value={consultForm.budget} onChange={handleConsultChange} required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="consult-noOfJobs">No. of Jobs you want to post</Label>
@@ -190,19 +183,7 @@ const HeroSection = () => {
             </div>
             <div className="space-y-2">
               <Label htmlFor="consult-analytics">What type of analytics do you prefer?</Label>
-              <Select
-                value={consultForm.analyticsPreference}
-                onValueChange={(value) => setConsultForm((prev) => ({ ...prev, analyticsPreference: value }))}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select analytics type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="basic">Basic — Application counts & status</SelectItem>
-                  <SelectItem value="advanced">Advanced — Channel performance & demographics</SelectItem>
-                  <SelectItem value="premium">Premium — Full funnel with custom reports</SelectItem>
-                </SelectContent>
-              </Select>
+              <Input id="consult-analytics" name="analyticsPreference" placeholder="e.g. Channel performance, funnel reports, etc." value={consultForm.analyticsPreference} onChange={handleConsultChange} required />
             </div>
             <Button type="submit" className="w-full mt-2">Submit</Button>
           </form>
