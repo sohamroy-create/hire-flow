@@ -175,7 +175,7 @@ const HeroSection = () => {
             </div>
             <div className="space-y-2">
               <Label htmlFor="consult-budget">Budget you are looking for</Label>
-              <Input id="consult-budget" name="budget" placeholder="e.g. $5,000 - $10,000" value={consultForm.budget} onChange={handleConsultChange} required />
+              <Input id="consult-budget" name="budget" placeholder="e.g. $100 - $1,500" value={consultForm.budget} onChange={handleConsultChange} required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="consult-noOfJobs">No. of Jobs you want to post</Label>
