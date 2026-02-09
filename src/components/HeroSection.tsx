@@ -1,4 +1,5 @@
 import { Megaphone, Palette, BarChart3, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.png";
 
 const steps = [
@@ -61,7 +62,18 @@ const HeroSection = () => {
               <span className="font-semibold text-primary">fast!</span>
             </p>
 
-            <div className="mt-8 h-1 w-16 rounded-full bg-primary" />
+            <div className="mt-8 flex items-center gap-4">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90"
+                onClick={() =>
+                  document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Get Started
+              </Button>
+              <div className="h-1 w-16 rounded-full bg-primary" />
+            </div>
           </div>
 
           {/* Right — 2x2 Process steps */}
