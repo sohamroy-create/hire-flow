@@ -45,7 +45,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/60" />
       </div>
 
-      <div className="relative container mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <div className="relative container mx-auto max-w-6xl px-4 py-12 md:py-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left — Marketing text */}
           <div className="flex flex-col justify-center">
