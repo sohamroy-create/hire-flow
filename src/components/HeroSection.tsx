@@ -51,9 +51,9 @@ const HeroSection = () => {
           {/* Left — Marketing text */}
           <div className="flex flex-col justify-center">
             <h1 className="text-4xl md:text-5xl lg:text-[3.4rem] font-extrabold leading-[1.1] tracking-tight text-foreground">
-              Social media is everywhere.{" "}
-              <span className="text-primary">Everyone is on it.</span>{" "}
-              <span className="text-muted-foreground">So are the candidates.</span>
+              Everyone's on social media.{" "}
+              <span className="text-primary">So are your candidates.</span>{" "}
+              <span className="text-muted-foreground">Are you?</span>
             </h1>
 
             <p className="mt-6 text-lg md:text-xl leading-relaxed text-muted-foreground max-w-lg">
