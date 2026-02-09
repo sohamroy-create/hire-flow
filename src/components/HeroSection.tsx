@@ -1,5 +1,22 @@
+import { useState } from "react";
 import { Megaphone, Palette, BarChart3, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import heroBg from "@/assets/hero-bg.png";
 
 const steps = [
@@ -34,6 +51,35 @@ const steps = [
 ];
 
 const HeroSection = () => {
+  const [consultOpen, setConsultOpen] = useState(false);
+  const [consultForm, setConsultForm] = useState({
+    name: "",
+    organisation: "",
+    industry: "",
+    budget: "",
+    noOfJobs: "",
+    analyticsPreference: "",
+  });
+
+  const handleConsultChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setConsultForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleConsultSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Consultation request submitted:", consultForm);
+    setConsultOpen(false);
+    setConsultForm({
+      name: "",
+      organisation: "",
+      industry: "",
+      budget: "",
+      noOfJobs: "",
+      analyticsPreference: "",
+    });
+  };
+
   return (
     <section className="relative w-full overflow-hidden bg-background">
       {/* Background creative */}
@@ -68,7 +114,7 @@ const HeroSection = () => {
               </p>
             </div>
 
-            <div className="mt-8">
+            <div className="mt-8 flex items-center gap-4">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90"
@@ -77,6 +123,14 @@ const HeroSection = () => {
                 }
               >
                 Get Started
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary/10"
+                onClick={() => setConsultOpen(true)}
+              >
+                Book a Consult
               </Button>
             </div>
           </div>
@@ -103,6 +157,57 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Book a Consult Dialog */}
+      <Dialog open={consultOpen} onOpenChange={setConsultOpen}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="text-xl font-bold">Book a Consultation</DialogTitle>
+            <DialogDescription>
+              Fill in your details and we'll get back to you shortly.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleConsultSubmit} className="space-y-4 mt-2">
+            <div className="space-y-2">
+              <Label htmlFor="consult-name">Name</Label>
+              <Input id="consult-name" name="name" placeholder="John Doe" value={consultForm.name} onChange={handleConsultChange} required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="consult-organisation">Organisation</Label>
+              <Input id="consult-organisation" name="organisation" placeholder="Acme Corp" value={consultForm.organisation} onChange={handleConsultChange} required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="consult-industry">Industry</Label>
+              <Input id="consult-industry" name="industry" placeholder="Technology, Healthcare, etc." value={consultForm.industry} onChange={handleConsultChange} required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="consult-budget">Budget you are looking for</Label>
+              <Input id="consult-budget" name="budget" placeholder="e.g. ₹50,000 - ₹1,00,000" value={consultForm.budget} onChange={handleConsultChange} required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="consult-noOfJobs">No. of Jobs you want to post</Label>
+              <Input id="consult-noOfJobs" name="noOfJobs" type="number" placeholder="e.g. 5" value={consultForm.noOfJobs} onChange={handleConsultChange} required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="consult-analytics">What type of analytics do you prefer?</Label>
+              <Select
+                value={consultForm.analyticsPreference}
+                onValueChange={(value) => setConsultForm((prev) => ({ ...prev, analyticsPreference: value }))}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select analytics type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="basic">Basic — Application counts & status</SelectItem>
+                  <SelectItem value="advanced">Advanced — Channel performance & demographics</SelectItem>
+                  <SelectItem value="premium">Premium — Full funnel with custom reports</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <Button type="submit" className="w-full mt-2">Submit</Button>
+          </form>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
