@@ -76,12 +76,8 @@ const HeroSection = () => {
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                     <step.icon className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="text-xs font-bold tracking-widest text-primary">
-                    STEP {step.number}
-                  </span>
+                  <h3 className="font-bold text-foreground">{step.header}</h3>
                 </div>
-
-                <h3 className="font-bold text-foreground">{step.header}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                   {step.explanation}
                 </p>
