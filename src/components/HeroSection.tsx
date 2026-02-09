@@ -1,4 +1,4 @@
-import { Megaphone, Palette, BarChart3, Send, Heart, Share2, Users, BriefcaseBusiness, MessageCircle, ThumbsUp, Target, TrendingUp } from "lucide-react";
+import { Megaphone, Palette, BarChart3, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.png";
 
@@ -33,17 +33,6 @@ const steps = [
   },
 ];
 
-const floatingIcons = [
-  { Icon: Heart, className: "top-8 left-[8%] text-primary/15 h-8 w-8 rotate-12" },
-  { Icon: Share2, className: "top-16 right-[12%] text-primary/10 h-7 w-7 -rotate-6" },
-  { Icon: Users, className: "bottom-12 left-[5%] text-primary/12 h-9 w-9 rotate-6" },
-  { Icon: BriefcaseBusiness, className: "top-[30%] left-[2%] text-primary/10 h-6 w-6 -rotate-12" },
-  { Icon: MessageCircle, className: "bottom-8 right-[8%] text-primary/15 h-7 w-7 rotate-12" },
-  { Icon: ThumbsUp, className: "top-12 left-[45%] text-primary/8 h-6 w-6 rotate-6" },
-  { Icon: Target, className: "bottom-[35%] right-[3%] text-primary/10 h-8 w-8 -rotate-6" },
-  { Icon: TrendingUp, className: "bottom-20 left-[42%] text-primary/10 h-7 w-7 rotate-3" },
-];
-
 const HeroSection = () => {
   return (
     <section className="relative w-full overflow-hidden bg-background">
@@ -52,15 +41,10 @@ const HeroSection = () => {
         <img
           src={heroBg}
           alt=""
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/60" />
       </div>
-
-      {/* Floating decorative icons */}
-      {floatingIcons.map(({ Icon, className }, i) => (
-        <Icon key={i} className={`absolute hidden lg:block ${className}`} strokeWidth={1.5} />
-      ))}
 
       <div className="relative container mx-auto max-w-6xl px-4 py-12 md:py-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
@@ -99,6 +83,7 @@ const HeroSection = () => {
                 key={step.number}
                 className="group relative rounded-xl border border-border bg-card/80 backdrop-blur-sm p-5 transition-shadow hover:shadow-md"
               >
+                {/* Step number + icon */}
                 <div className="flex items-center gap-3 mb-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
                     <step.icon className="h-5 w-5 text-primary" />
