@@ -68,7 +68,7 @@ const HeroSection = () => {
               </p>
             </div>
 
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-8">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90"
@@ -78,7 +78,6 @@ const HeroSection = () => {
               >
                 Get Started
               </Button>
-              <div className="h-1 w-16 rounded-full bg-primary" />
             </div>
           </div>
 
