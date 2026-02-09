@@ -25,21 +25,21 @@ const steps = [
     icon: Megaphone,
     header: "Ad Copy Creation",
     explanation:
-      "We create the ad copies and the creatives that reflect your brand values, so you get the desired candidates",
+      "We carefully curate the ad copies and the creatives that reflect your brand values",
   },
   {
     number: "03",
     icon: Send,
     header: "Channel Actuation",
     explanation:
-      "We post the creatives in the effective channels depending on your requirements for optimised performance",
+      "We post the creatives in the effective channels depending on your brand's requirements",
   },
   {
     number: "04",
     icon: BarChart3,
     header: "Analysis & Tracking",
     explanation:
-      "While we keep optimising performance, you get a dashboard that tracks the applications and related performance for you to obsess over",
+      "While we keep optimising performance, you get a dashboard to track the applications",
   },
 ];
 
