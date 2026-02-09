@@ -45,6 +45,7 @@ const steps = [
 
 const HeroSection = () => {
   const [consultOpen, setConsultOpen] = useState(false);
+  const [consultSubmitted, setConsultSubmitted] = useState(false);
   const [consultForm, setConsultForm] = useState({
     name: "",
     organisation: "",
@@ -62,15 +63,22 @@ const HeroSection = () => {
   const handleConsultSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Consultation request submitted:", consultForm);
-    setConsultOpen(false);
-    setConsultForm({
-      name: "",
-      organisation: "",
-      industry: "",
-      budget: "",
-      noOfJobs: "",
-      analyticsPreference: "",
-    });
+    setConsultSubmitted(true);
+  };
+
+  const handleConsultClose = (open: boolean) => {
+    setConsultOpen(open);
+    if (!open) {
+      setConsultSubmitted(false);
+      setConsultForm({
+        name: "",
+        organisation: "",
+        industry: "",
+        budget: "",
+        noOfJobs: "",
+        analyticsPreference: "",
+      });
+    }
   };
 
   return (
@@ -152,41 +160,57 @@ const HeroSection = () => {
       </div>
 
       {/* Book a Consult Dialog */}
-      <Dialog open={consultOpen} onOpenChange={setConsultOpen}>
+      <Dialog open={consultOpen} onOpenChange={handleConsultClose}>
         <DialogContent className="sm:max-w-lg">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-bold">Book a Consultation</DialogTitle>
-            <DialogDescription>
-              Fill in your details and we'll get back to you shortly.
-            </DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleConsultSubmit} className="space-y-4 mt-2">
-            <div className="space-y-2">
-              <Label htmlFor="consult-name">Name</Label>
-              <Input id="consult-name" name="name" placeholder="John Doe" value={consultForm.name} onChange={handleConsultChange} required />
+          {consultSubmitted ? (
+            <div className="flex flex-col items-center text-center py-10 gap-6">
+              <h2 className="text-2xl font-extrabold text-foreground">
+                We have received your query
+              </h2>
+              <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
+                Someone from our team will reach out to you within 24 hours.
+              </p>
+              <Button onClick={() => handleConsultClose(false)} className="mt-2">
+                Close
+              </Button>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="consult-organisation">Organisation</Label>
-              <Input id="consult-organisation" name="organisation" placeholder="Acme Corp" value={consultForm.organisation} onChange={handleConsultChange} required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="consult-industry">Industry</Label>
-              <Input id="consult-industry" name="industry" placeholder="Technology, Healthcare, etc." value={consultForm.industry} onChange={handleConsultChange} required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="consult-budget">Budget you are looking for</Label>
-              <Input id="consult-budget" name="budget" placeholder="e.g. $100 - $1,500" value={consultForm.budget} onChange={handleConsultChange} required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="consult-noOfJobs">No. of Jobs you want to post</Label>
-              <Input id="consult-noOfJobs" name="noOfJobs" type="number" placeholder="e.g. 5" value={consultForm.noOfJobs} onChange={handleConsultChange} required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="consult-analytics">What type of analytics do you prefer?</Label>
-              <Input id="consult-analytics" name="analyticsPreference" placeholder="e.g. Channel performance, funnel reports, etc." value={consultForm.analyticsPreference} onChange={handleConsultChange} required />
-            </div>
-            <Button type="submit" className="w-full mt-2">Submit</Button>
-          </form>
+          ) : (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-xl font-bold">Book a Consultation</DialogTitle>
+                <DialogDescription>
+                  Fill in your details and we'll get back to you shortly.
+                </DialogDescription>
+              </DialogHeader>
+              <form onSubmit={handleConsultSubmit} className="space-y-4 mt-2">
+                <div className="space-y-2">
+                  <Label htmlFor="consult-name">Name</Label>
+                  <Input id="consult-name" name="name" placeholder="John Doe" value={consultForm.name} onChange={handleConsultChange} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="consult-organisation">Organisation</Label>
+                  <Input id="consult-organisation" name="organisation" placeholder="Acme Corp" value={consultForm.organisation} onChange={handleConsultChange} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="consult-industry">Industry</Label>
+                  <Input id="consult-industry" name="industry" placeholder="Technology, Healthcare, etc." value={consultForm.industry} onChange={handleConsultChange} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="consult-budget">Budget you are looking for</Label>
+                  <Input id="consult-budget" name="budget" placeholder="e.g. $100 - $1,500" value={consultForm.budget} onChange={handleConsultChange} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="consult-noOfJobs">No. of Jobs you want to post</Label>
+                  <Input id="consult-noOfJobs" name="noOfJobs" type="number" placeholder="e.g. 5" value={consultForm.noOfJobs} onChange={handleConsultChange} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="consult-analytics">What type of analytics do you prefer?</Label>
+                  <Input id="consult-analytics" name="analyticsPreference" placeholder="e.g. Channel performance, funnel reports, etc." value={consultForm.analyticsPreference} onChange={handleConsultChange} required />
+                </div>
+                <Button type="submit" className="w-full mt-2">Submit</Button>
+              </form>
+            </>
+          )}
         </DialogContent>
       </Dialog>
     </section>
